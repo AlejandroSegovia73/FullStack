@@ -1,2 +1,2 @@
 # FullStack
-I'm gonna got this
+I'm gonna get this
