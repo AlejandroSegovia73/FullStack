@@ -18,20 +18,37 @@ const Hello = ({ name, age }) => {
   );
 };
 
+const Display = ({counter}) =>{
+  return(
+    <div>
+      {counter}
+    </div>
+  )
+}
+
+const Button = ({handleClick, text}) =>{
+  return(
+    <div>
+      <button onClick={handleClick}>
+        {text}
+      </button>
+    </div>
+  )
+}
+
 const App = () => {
   const [counter, setCounter] = useState(0);
-
-  setTimeout(() => {
-    setCounter(counter + 1);
-  }, 1000);
-
-  console.log("rendering...", counter);
-
+  const plus = () => setCounter(counter + 1);
+  const reset = () => setCounter(0)
+  const minus = () => setCounter(counter - 1);
   return (
     <div>
       <Hello name="Alejandro" age={21} />
       <Hello name="Firu" age={2} />
-      {counter}
+      <Display counter = {counter}/>
+      <Button handleClick = {plus} text = '+'/>
+      <Button handleClick = {reset} text =' Reset'/>
+      <Button handleClick={minus} text = '-'/>
     </div>
   );
 };
