@@ -1,25 +1,26 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-const Hello = (props) => {
+const Hello = ({name, age}) => {
+  const bornYear = () => {
+    const now = new Date()
+    const yearNow = now.getFullYear();
+    return yearNow - age 
+  }
+
   return (
     <div>
-      <h1>Hello {props.name}</h1>
+      <h2>Hello {name}, u are {age} years old.</h2>
+      <p>You were born in {bornYear()}</p>
     </div>
   )
 }
 
 const App = () => {
-
-  const now = new Date();
-  const a = 10;
-  const b = 20;
-
   return (
     <div>
-      <Hello name = "Alejandro"/>
-      <p>Hello world, it's {now.toDateString()}</p>
-      <p>{a} plus {b} is {a + b}</p>
+      <Hello name = "Alejandro" age = {21}/>
+      <Hello name = "Firu" age = {2} />
     </div>
   );
 };
