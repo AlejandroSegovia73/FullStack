@@ -16,13 +16,26 @@ const Hello = ({name, age}) => {
   )
 }
 
-const App = () => {
+const App = ({counter}) => {
   return (
     <div>
       <Hello name = "Alejandro" age = {21}/>
       <Hello name = "Firu" age = {2} />
+      {counter}
     </div>
   );
 };
 
-ReactDOM.render(<App />, document.getElementById("root"));
+let counter = 1;
+
+const refresh = () => {  
+  ReactDOM.render(<App 
+    counter={counter}/>,
+    document.getElementById("root")
+  );
+}
+setInterval(() => {
+  refresh();
+  counter += 1;
+
+}, 2000)
