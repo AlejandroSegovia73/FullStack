@@ -1,36 +1,29 @@
 import React, { useState } from "react";
 import { createRoot } from "react-dom/client";
 
+const History = ({ allClicks }) => {
+  console.log(allClicks);
+  if (allClicks.length === 0)
+    return <h4> La app se utiliza pulsando los botones</h4>
+
+  return <h4>Historial de clicks: {allClicks}</h4>
+
+}
+
 const App = () => {
   const [left, setLeft] = useState(0);
   const [right, setRight] = useState(0);
   const [allClicks, setAllClicks] = useState([]);
 
   const handleLeftClick = () => {
-    setAllClicks(allClicks.concat('L'))
-    setLeft(left + 1)
-  }
+    setAllClicks(allClicks.concat("L"));
+    setLeft(left + 1);
+  };
   const handleRightClick = () => {
-    setAllClicks(allClicks.concat('R'))
-    setRight(right + 1)
-   
-  }
-  console.log(allClicks);
-  //Usando un objeto
-  // const [clicks, setClicks] = useState({ left2: 0, right2: 0 });
-
-  // const handleLeftClick = () => {
-  //   setClicks({
-  //     ...clicks,
-  //     left2: clicks.left2 + 1,
-  //   });
-  // };
-  // const handleRightClick = () => {
-  //   setClicks({
-  //     ...clicks,
-  //     right2: clicks.right2 + 1,
-  //   });
-  // };
+    setAllClicks(allClicks.concat('R'));
+    setRight(right + 1);
+  };
+  //console.log(allClicks);
 
   return (
     <div>
@@ -40,15 +33,8 @@ const App = () => {
 
         <button onClick={handleRightClick}>Right</button>
         {right}
-        <p>{allClicks}</p>
+        <History allClicks={allClicks} />
       </div>
-
-      {/* <div>
-        {clicks.left2}
-        <button onClick={handleLeftClick}>Left2</button>
-        <button onClick={handleRightClick}>Right2</button>
-        {clicks.right2}
-      </div> */}
     </div>
   );
 };
