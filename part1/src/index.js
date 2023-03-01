@@ -1,13 +1,17 @@
 import React, { useState } from "react";
 import { createRoot } from "react-dom/client";
 
-const History = ({ allClicks }) => {
-  console.log(allClicks);
-  if (allClicks.length === 0)
-    return <h4> La app se utiliza pulsando los botones</h4>
+const History = ({ allClicks }) => 
+  (allClicks.length === 0) 
+    ? <h4> La app se utiliza pulsando los botones</h4>
+    : <h4>Historial de clicks: {allClicks}</h4>
 
-  return <h4>Historial de clicks: {allClicks}</h4>
-
+const Button = ({text, onClick}) => {
+  return(
+    <button onClick={onClick}>
+      {text}
+    </button>
+  )
 }
 
 const App = () => {
@@ -29,9 +33,8 @@ const App = () => {
     <div>
       <div>
         {left}
-        <button onClick={handleLeftClick}>Left</button>
-
-        <button onClick={handleRightClick}>Right</button>
+        <Button text="Left" onClick={handleLeftClick}/>
+        <Button text="Right" onClick={handleRightClick}/>
         {right}
         <History allClicks={allClicks} />
       </div>
