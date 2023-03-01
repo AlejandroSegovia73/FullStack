@@ -1,42 +1,54 @@
 import React, { useState } from "react";
-import {createRoot} from "react-dom/client";
+import { createRoot } from "react-dom/client";
 
 const App = () => {
   const [left, setLeft] = useState(0);
   const [right, setRight] = useState(0);
-
-  //Usando un objeto
-  const [clicks, setClicks] = useState({ left2: 0, right2: 0 });
+  const [allClicks, setAllClicks] = useState([]);
 
   const handleLeftClick = () => {
-    setClicks({
-      ...clicks,
-      left2: clicks.left2 + 1,
-    });
-  };
+    setAllClicks(allClicks.concat('L'))
+    setLeft(left + 1)
+  }
   const handleRightClick = () => {
-    setClicks({
-      ...clicks,
-      right2: clicks.right2 + 1,
-    });
-  };
+    setAllClicks(allClicks.concat('R'))
+    setRight(right + 1)
+   
+  }
+  console.log(allClicks);
+  //Usando un objeto
+  // const [clicks, setClicks] = useState({ left2: 0, right2: 0 });
+
+  // const handleLeftClick = () => {
+  //   setClicks({
+  //     ...clicks,
+  //     left2: clicks.left2 + 1,
+  //   });
+  // };
+  // const handleRightClick = () => {
+  //   setClicks({
+  //     ...clicks,
+  //     right2: clicks.right2 + 1,
+  //   });
+  // };
 
   return (
     <div>
       <div>
         {left}
-        <button onClick={() => setLeft(left + 1)}>Left</button>
+        <button onClick={handleLeftClick}>Left</button>
 
-        <button onClick={() => setRight(right + 1)}>Right</button>
+        <button onClick={handleRightClick}>Right</button>
         {right}
+        <p>{allClicks}</p>
       </div>
 
-      <div>
+      {/* <div>
         {clicks.left2}
         <button onClick={handleLeftClick}>Left2</button>
         <button onClick={handleRightClick}>Right2</button>
         {clicks.right2}
-      </div>
+      </div> */}
     </div>
   );
 };
